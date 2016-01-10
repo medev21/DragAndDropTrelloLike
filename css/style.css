@@ -2,10 +2,10 @@ body {
   background: #23719F;
 }
 
-.list {
+.list{
   background-color: #E3E3E3;
   border-radius: 3px;
-  margin: 5px 5px;
+  margin: 5px 10px;
   padding: 10px;
   width: 260px;
   float: left;
@@ -21,6 +21,7 @@ body {
 .list .card {
   background-color: #FFF;
   border-bottom: 1px solid #CCC;
+  margin: 10px 0;
   padding: 6px 8px;
   cursor: pointer;
 }
