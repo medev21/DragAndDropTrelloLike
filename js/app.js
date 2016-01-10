@@ -1,11 +1,12 @@
 // sortables
-$( ".list-sortable" ).sortable();
-$( ".list-sortable" ).disableSelection();
+$( ".list-sortable, .list" ).sortable();
+$( ".list-sortable, .list" ).disableSelection();
+$(".list").sortable({
+  cancel: 'header'
+});//this exclude the header tag from being sorted!
+///////end of sortables////////////
 
-$( ".list" ).sortable();
-$( ".list" ).disableSelection();
-
-// drag and drop
+////// drag and drop////////
 $(".card").draggable({
   revert: "invalid",
   snap: "true",
@@ -21,3 +22,4 @@ $(".list").droppable({
     $(this).find('.bottom').prepend(ui.helper);
   }
 });
+///////////end of drag and drop////////////////
