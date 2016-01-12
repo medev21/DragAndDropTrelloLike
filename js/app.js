@@ -1,40 +1,67 @@
 // sortables
+$( ".list-sortable" ).sortable().disableSelection();
 
-$( ".list-sortable, .list" ).sortable();
-$( ".list-sortable, .list" ).disableSelection();
-
-// $( ".list-sortable" ).sortable();
-// $( ".list-sortable" ).disableSelection();
-//
-// $( ".bottom" ).sortable();
-// $( ".bottom" ).disableSelection();
-
-$(".list").sortable({
-  cancel: 'header'
-});//this exclude the header tag from being sorted!
+// $(".list").sortable({
+//   cancel: 'header'
+// });
+//this exclude the header tag from being sorted!
 
 ///////end of sortables////////////
 
 
 ////// drag and drop////////
 
-$(".card").draggable({
+$(".list").sortable({
+  cancel: 'header',
+  connectWith: ".bottom",
+  helper: "",
   revert: "invalid",
-  snap: "true",
-  snapMode: "inner"
+  start: function (event, ui) {
+      var $item = ui.helper;
+      $item.css({
+        'width': $('.list .card').width(),
+        'height': $('.list .card').height()
+      });
+  },
+  stop: function (event, ui) {}
 });
 
-$(".list").droppable({
-  revert: "invalid",
-  accept: '.card',
-  drop: function(event, ui){
-    ui.helper.css('top','');
-    ui.helper.css('left','');
-    $(this).find('.bottom').prepend(ui.helper);
-  }
+$(".bottom").sortable({
+  placeholder: "ui-state-highlight",
+  connectWith :'.list',
+  revert: true,
+  cursor: "move",
+  items: ".card",
+  drop: function (event, ui) {
+
+  },
+  stop: function (event, ui) {
+      var $obj = $(ui.item);
+      //
+      }
 });
 
 ///////////end of drag and drop////////////////
 
 
-// $( ".list" ).sortable();
+
+////// drag and drop////////
+
+// $(".card").draggable({
+//   revert: "invalid",
+//   snap: "true",
+//   snapMode: "inner"
+// });
+//
+// $(".list").droppable({
+//   revert: "invalid",
+//   // accept: '.card',
+//   accept: ":not(.ui-sortable-helper)",
+//   drop: function(event, ui){
+//     ui.helper.css('top','');
+//     ui.helper.css('left','');
+//     $(this).find('.bottom').prepend(ui.helper);
+//   }
+// });
+
+///////////end of drag and drop////////////////
