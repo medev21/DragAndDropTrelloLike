@@ -13,25 +13,27 @@ $( ".list-sortable" ).sortable().disableSelection();
 
 $(".list").sortable({
   cancel: 'header',
-  connectWith: ".bottom",
+  connectWith: ".list",
   helper: "",
   revert: "invalid",
+  // forcePlaceholderSize: true,
   start: function (event, ui) {
       var $item = ui.helper;
       $item.css({
-        'width': $('.list .card').width(),
-        'height': $('.list .card').height()
+        'width': $('.list article').width(),
       });
+      ui.placeholder.height(ui.item.height());
   },
   stop: function (event, ui) {}
 });
 
-$(".bottom").sortable({
+$(".list").sortable({
   placeholder: "ui-state-highlight",
   connectWith :'.list',
   revert: true,
   cursor: "move",
-  items: ".card",
+  items: "article",
+  // forcePlaceholderSize: true,
   drop: function (event, ui) {
 
   },
@@ -40,6 +42,21 @@ $(".bottom").sortable({
       //
       }
 });
+
+// $(".bottom").sortable({
+//   placeholder: "ui-state-highlight",
+//   connectWith :'.list',
+//   revert: true,
+//   cursor: "move",
+//   items: ".card",
+//   drop: function (event, ui) {
+//
+//   },
+//   stop: function (event, ui) {
+//       var $obj = $(ui.item);
+//       //
+//       }
+// });
 
 ///////////end of drag and drop////////////////
 
