@@ -1,38 +1,40 @@
 // sortables
-$( ".list-sortable" ).sortable().disableSelection();
+// $( ".list-sortable" ).sortable({
+//   items: "section"
+// }).disableSelection();
 
-// $(".list").sortable({
-//   cancel: 'header'
-// });
-//this exclude the header tag from being sorted!
+$( ".list-sortable" ).sortable({
+  cancel: '.listA, .listB'
+}).disableSelection();
 
 ///////end of sortables////////////
 
 
 ////// drag and drop////////
 
-$(".list").sortable({
-  cancel: 'header',
-  connectWith: ".list",
+$(".listA").sortable({
+  cancel: 'header', //this exclude the header tag from being sorted!
+  connectWith: ".listB",
   helper: "",
   revert: "invalid",
   // forcePlaceholderSize: true,
   start: function (event, ui) {
       var $item = ui.helper;
       $item.css({
-        'width': $('.list article').width(),
+        'width': $('.card').width(),
       });
       ui.placeholder.height(ui.item.height());
   },
   stop: function (event, ui) {}
 });
 
-$(".list").sortable({
+$(".listB").sortable({
+  // tolerance: 'pointer',
   placeholder: "ui-state-highlight",
-  connectWith :'.list',
+  connectWith :'.listA',
   revert: true,
   cursor: "move",
-  items: "article",
+  items: ".card",
   // forcePlaceholderSize: true,
   drop: function (event, ui) {
 
@@ -42,6 +44,40 @@ $(".list").sortable({
       //
       }
 });
+
+// $(".list").sortable({
+//   cancel: 'header, .bottom', //this exclude the header tag from being sorted!
+//   connectWith: ".list",
+//   // helper: "",
+//   revert: "invalid",
+//   // forcePlaceholderSize: true,
+//   start: function (event, ui) {
+//       var $item = ui.helper;
+//       $item.css({
+//         'width': $('.list article').width(),
+//       });
+//       ui.placeholder.height(ui.item.height());
+//   },
+//   stop: function (event, ui) {}
+// });
+//
+// $(".list").sortable({
+//   placeholder: "ui-state-highlight",
+//   connectWith :'.list',
+//   revert: true,
+//   cursor: "move",
+//   items: "article",
+//   // forcePlaceholderSize: true,
+//   drop: function (event, ui) {
+//
+//   },
+//   stop: function (event, ui) {
+//       var $obj = $(ui.item);
+//       //
+//       }
+// });
+
+// $('.bottom').removeClass('ui-sortable-handle ui-sortable-helper');
 
 // $(".bottom").sortable({
 //   placeholder: "ui-state-highlight",
@@ -82,3 +118,7 @@ $(".list").sortable({
 // });
 
 ///////////end of drag and drop////////////////
+
+// $(".list").sortable({
+//   cancel: 'header'
+// });
