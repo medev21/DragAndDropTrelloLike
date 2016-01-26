@@ -23,6 +23,7 @@ $(".listA").sortable({
       $item.css({
         'width': $('.card').width(),
       });
+      // ui.placeholder.height(ui.item.children().height());
       ui.placeholder.height(ui.item.height());
   },
   stop: function (event, ui) {}
@@ -44,6 +45,8 @@ $(".listB").sortable({
       //
       }
 });
+
+$('.card-header').addClass('ui-sortable-handle');
 
 // $(".list").sortable({
 //   cancel: 'header, .bottom', //this exclude the header tag from being sorted!
